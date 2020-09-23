@@ -2,7 +2,6 @@
 
 namespace Digikraaft\Mono\Tests;
 
-use Digikraaft\Mono\Tests\TestHelper;
 use Digikraaft\Mono\Exceptions\InvalidArgumentException;
 use Digikraaft\Mono\Mono;
 use Mockery as mk;
