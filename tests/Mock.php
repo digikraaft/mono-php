@@ -2,7 +2,6 @@
 
 namespace Digikraaft\Mono\Tests;
 
-use Digikraaft\Mono\Tests\TestHelper;
 use Digikraaft\Mono\Exceptions\InvalidArgumentException;
 use Digikraaft\Mono\Mono;
 use Mockery as mk;
@@ -21,9 +20,9 @@ class Mock extends TestCase
     }
 
     /** @test */
-    public function it_returns_instance_of_openbanking_ng()
+    public function it_returns_instance_of_mono_ng()
     {
-        $this->assertInstanceOf("Digikraaft\OpenBankingNg\OpenBankingNg", $this->mono);
+        $this->assertInstanceOf("Digikraaft\Mono\Mono", $this->mono);
     }
 
     /** @test */

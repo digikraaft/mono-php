@@ -79,13 +79,13 @@ trait Request
      */
     protected static function setRequestOptions(): void
     {
-        $authBearer = 'Bearer '.Mono::getSecretKey();
+        $auth = Mono::getSecretKey();
 
         static::$client = new Client(
             [
                 'base_uri' => Mono::$apiBaseUrl,
                 'headers' => [
-                    'Authorization' => $authBearer,
+                    'mono-sec-key' => $auth,
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
                 ],

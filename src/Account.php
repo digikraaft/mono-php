@@ -14,11 +14,18 @@ class Account extends ApiResource
      * @throws Exceptions\IsNullException
      * @link https://www.notion.so/API-endpoints-b75e32f64c75471ab5fbcc61927f6679
      */
-    public static function auththenticate(string $authCode)
+    public static function authenticate(string $authCode)
     {
-        $url = static::endPointUrl("auth");
+        $url = "account/auth";
 
         return static::staticRequest('POST', $url, ['code' => $authCode]);
+    }
+
+    public static function details(string $id)
+    {
+        $url = self::endPointUrl("{$id}");
+
+        return self::staticRequest('GET', $url);
     }
 
     /**
@@ -45,7 +52,7 @@ class Account extends ApiResource
      * @throws Exceptions\IsNullException
      * @link https://www.notion.so/API-endpoints-b75e32f64c75471ab5fbcc61927f6679
      */
-    public static function listTransactions(string $id, array $filters)
+    public static function listTransactions(string $id, ?array $filters = null)
     {
         $url = static::buildQueryString("{$id}/transactions", $filters);
 

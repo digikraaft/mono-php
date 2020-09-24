@@ -18,16 +18,13 @@
     ],
     "require": {
         "php": "^7.4",
-        "guzzlehttp/guzzle": "^6.5",
+        "guzzlehttp/guzzle": "^7.0",
         "ext-json": "*"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
         "mockery/mockery": "^1.4",
-        "php-coveralls/php-coveralls": "^2.2",
-        "phpunit/phpunit": "^9.0",
-        "scrutinizer/ocular": "^1.7",
-        "vimeo/psalm": "^3.11"
+        "phpunit/phpunit": "^9.0"
     },
     "autoload": {
         "psr-4": {
