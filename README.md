@@ -25,7 +25,7 @@ composer require digikraaft/mono-php
 All APIs documented in Mono's [API Reference](https://www.notion.so/API-endpoints-b75e32f64c75471ab5fbcc61927f6679) 
 are currently supported by this package.
 
-#### Authentication
+### Authentication
 Before using any of the endpoints, you will have to authenticate the current account
 with the endpoint `account/auth` :
 ```
@@ -47,9 +47,9 @@ $ccountId = $account->data->id;
 
 ```
 
-#### Available Methods
+### Available Methods
 A list of the available methods are documented below:
-##### Account
+#### Account
 * `authenticate(string $codeFromConnect) : Array|Object`
 * `details(string $accountId) : Array|Object`
 * `fetchStatement(string $accountId) : Array|Object`
