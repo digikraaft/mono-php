@@ -9,7 +9,7 @@ This package provides an expressive and convenient way to interact with the [Mon
 
 # IMPORTANT NOTICE
 Please note that the Mono API is not currently in private beta, this package
-is a pre-lease and therefore not stable for production. Use at your discretion!
+is a pre-lease and therefore may not be stable enough for production. Use at your discretion!
 
 We will continue to update this package as new features are being added to the Mono API.
 
