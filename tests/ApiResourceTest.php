@@ -3,7 +3,6 @@
 namespace Digikraaft\Mono\Tests;
 
 use Digikraaft\Mono\ApiResource;
-use Digikraaft\Mono\Exceptions\InvalidArgumentException;
 use Mockery as mk;
 use PHPUnit\Framework\TestCase;
 
