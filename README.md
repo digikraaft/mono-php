@@ -52,7 +52,7 @@ A list of the available methods are documented below:
 #### Account
 * `authenticate(string $codeFromConnect) : Array|Object`
 * `details(string $accountId) : Array|Object`
-* `fetchStatement(string $accountId) : Array|Object`
+* `fetchStatement(string $accountId, array $filters) : Array|Object`
 * `income(string $accountId) : Array|Object`
 * `listCredits(string $accountId) : Array|Object`
 * `listDebits(string $accountId) : Array|Object`
