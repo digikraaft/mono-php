@@ -1,4 +1,4 @@
-# Conveniently interact with the Open Banking Nigeria API with ease!
+# Convenient PHP wrapper to the Mono API
 ![run-tests](https://github.com/digikraaft/mono-php/workflows/run-tests/badge.svg)
 [![Build Status](https://travis-ci.com/digikraaft/mono-php.svg?token=6YhB5FxJsF7ENdMM7Mzz&branch=master)](https://travis-ci.com/digikraaft/mono-php)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/digikraaft/mono-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/digikraaft/mono-php/?branch=master)
