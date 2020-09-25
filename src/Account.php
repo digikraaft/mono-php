@@ -31,14 +31,16 @@ class Account extends ApiResource
     /**
      * @param string $id
      *
+     * @param array  $filters
+     *
      * @return array|object
      * @throws Exceptions\InvalidArgumentException
      * @throws Exceptions\IsNullException
      * @link https://www.notion.so/API-endpoints-b75e32f64c75471ab5fbcc61927f6679
      */
-    public static function fetchStatement(string $id)
+    public static function fetchStatement(string $id, array $filters)
     {
-        $url = static::endPointUrl("{$id}/statement");
+        $url = static::buildQueryString("{$id}/statement", $filters);
 
         return static::staticRequest('GET', $url);
     }
@@ -87,5 +89,12 @@ class Account extends ApiResource
         $url = static::buildQueryString("{$id}/debits");
 
         return static::staticRequest('GET', $url);
+    }
+
+    public static function income(string $id)
+    {
+        $url = static::endPointUrl("{$id}/income");
+
+        return static::staticRequest("GET", $url);
     }
 }

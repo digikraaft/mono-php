@@ -1,9 +1,9 @@
 <?php
 
-namespace Digikraaft\OpenBankingNg\Tests;
+namespace Digikraaft\Mono\Tests;
 
-use Digikraaft\OpenBankingNg\Exceptions\InvalidArgumentException;
-use Digikraaft\OpenBankingNg\Util\Util;
+use Digikraaft\Mono\Exceptions\InvalidArgumentException;
+use Digikraaft\Mono\Util\Util;
 use PHPUnit\Framework\TestCase;
 
 class UtilTest extends TestCase

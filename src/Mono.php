@@ -9,9 +9,6 @@ class Mono
     /** @var string The Mono API key to be used for requests. */
     public static string $secretKey;
 
-    /** @var string The instance API key, settable once per new instance */
-    private $instanceApiKey;
-
     /** @var string The base URL for the Mono API. */
     public static $apiBaseUrl = 'https://api.withmono.com';
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Digikraaft\OpenBankingNg\Tests;
+namespace Digikraaft\Mono\Tests;
 
-use Digikraaft\OpenBankingNg\ApiResource;
-use Digikraaft\OpenBankingNg\Exceptions\InvalidArgumentException;
+use Digikraaft\Mono\ApiResource;
+use Digikraaft\Mono\Exceptions\InvalidArgumentException;
 use Mockery as mk;
 use PHPUnit\Framework\TestCase;
 
@@ -20,20 +20,6 @@ class ApiResourceTest extends TestCase
     public function it_returns_endpoint_url()
     {
         $url = ApiResource::endPointUrl('digikraaft');
-        $this->assertIsString($url);
-    }
-
-    /** @test * */
-    public function it_returns_exception_for_null_resource_id()
-    {
-        $this->expectException(InvalidArgumentException::class);
-        ApiResource::resourceUrl(null);
-    }
-
-    /** @test  * */
-    public function it_returns_resource_url()
-    {
-        $url = ApiResource::resourceUrl('cus_1234');
         $this->assertIsString($url);
     }
 

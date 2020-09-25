@@ -9,5 +9,6 @@ class TestHelper
     public static function setup()
     {
         Mono::$apiBaseUrl = 'https://api.withmono.com';
+        Mono::setSecretKey('sec-sdddsje');
     }
 }
