@@ -42,7 +42,7 @@ $codeFromMonoConnect = "5eadinitaewqwuis";
 
 $account = Account::authenticate($codeFromMonoConnect);
 
-$ccountId = $account->data->id;
+$accountId = $account->data->id;
 
 ```
 
