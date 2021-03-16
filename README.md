@@ -64,7 +64,7 @@ A list of the available methods are documented below:
 #### Mono
 * `getSecretKey(): string`
 * `setSecretKey(string $secretKey)`
-* `coverage : Array|Object`
+* `coverage() : Array|Object`
 
 #### Payment
 * `initiate(array $params) : Array|Object`
