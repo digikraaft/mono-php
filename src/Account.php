@@ -136,7 +136,7 @@ class Account extends ApiResource
      * @throws Exceptions\IsNullException
      * @link https://docs.mono.co/reference#reauth-code
      */
-    public static function reauthorise(string $accountId, ?array $params = null)
+    public static function reAuthorise(string $accountId, ?array $params = null)
     {
         $url = static::endPointUrl("{$accountId}/reauthorise");
 

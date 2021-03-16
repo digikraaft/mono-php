@@ -15,7 +15,7 @@ class Mono extends ApiResource
     /**
      * @return string the API key used for requests
      */
-    public static function getSecretKey(): string
+    public static function getSecretKey()
     {
         return self::$secretKey;
     }
@@ -25,13 +25,18 @@ class Mono extends ApiResource
      *
      * @param string $secretKey
      */
-    public static function setSecretKey($secretKey): void
+    public static function setSecretKey($secretKey)
     {
         self::validateSecretKey($secretKey);
         self::$secretKey = $secretKey;
     }
 
-    private static function validateSecretKey($secretKey): bool
+    /**
+     * @param $secretKey
+     * @return bool
+     * @throws InvalidArgumentException
+     */
+    private static function validateSecretKey($secretKey)
     {
         if ($secretKey == '' || ! is_string($secretKey)) {
             throw new InvalidArgumentException('Secret key must be a string and cannot be empty');

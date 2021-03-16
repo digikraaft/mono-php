@@ -22,8 +22,7 @@ composer require digikraaft/mono-php
 ```
 
 ## Usage
-All APIs documented in Mono's [API Reference](https://www.notion.so/API-endpoints-b75e32f64c75471ab5fbcc61927f6679) 
-are currently supported by this package.
+All APIs documented in Mono's [API Reference](https://docs.mono.co/docs) are currently supported by this package.
 
 ### Authentication
 Before using any of the endpoints, you will have to authenticate the current account
@@ -51,12 +50,35 @@ $ccountId = $account->data->id;
 A list of the available methods are documented below:
 #### Account
 * `authenticate(string $codeFromConnect) : Array|Object`
+* `bvnLookup($params = null) : Array|Object`
 * `details(string $accountId) : Array|Object`
 * `fetchStatement(string $accountId, array $filters) : Array|Object`
+* `identity(string $accountId) : Array|Object`
 * `income(string $accountId) : Array|Object`
-* `listCredits(string $accountId) : Array|Object`
-* `listDebits(string $accountId) : Array|Object`
-* `listStatements(string $accountId, array $filters) : Array|Object`
+* `listTransactions(string $accountId, array $filters) : Array|Object`
+* `pollStatementPdfStatus(string $accountId, string $jobId) : Array|Object`
+* `reAuthorise(string $accountId, ?array $params = null) : Array|Object`
+* `sync(string $accountId, ?array $params = null) : Array|Object`
+* `unlink(string $accountId, ?array $params = null) : Array|Object`
+
+#### Mono
+* `getSecretKey(): string`
+* `setSecretKey(string $secretKey)`
+* `coverage : Array|Object`
+
+#### Payment
+* `initiate(array $params) : Array|Object`
+* `onetimeDebitStatus(string $paymentId) : Array|Object`
+* `recurringDebitStatus(string $paymentId) : Array|Object`
+
+#### Plan
+* `create(array $params) : Array|Object`
+* `delete(string $paymentId) : Array|Object`
+* `list(string $paymentId) : Array|Object`
+* `update(string $paymentId, array $params) : Array|Object`
+
+#### Wallet
+* `balance() : Array|Object`
 
 This package returns the exact response from the Mono API but as the `stdClass` type.
 
