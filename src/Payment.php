@@ -3,9 +3,6 @@
 
     namespace Digikraaft\Mono;
 
-
-    use Digikraaft\Mono\Util\Util;
-
     class Payment extends ApiResource
     {
         const OBJECT_NAME = 'payments';

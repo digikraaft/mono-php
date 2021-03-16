@@ -3,7 +3,6 @@
 
     namespace Digikraaft\Mono;
 
-
     class Wallet extends ApiResource
     {
         /**
