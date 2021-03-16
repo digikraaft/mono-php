@@ -1,9 +1,10 @@
 <?php
 
-namespace Digikraaft\Paystack\ApiOperations;
+namespace Digikraaft\Mono\ApiOperations;
 
 trait Create
 {
+    use Request;
     /**
      * @param array $params
      *

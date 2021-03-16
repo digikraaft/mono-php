@@ -4,7 +4,7 @@ namespace Digikraaft\Mono;
 
 use Digikraaft\Mono\Exceptions\InvalidArgumentException;
 
-class Mono
+class Mono extends ApiResource
 {
     /** @var string The Mono API key to be used for requests. */
     public static string $secretKey;
@@ -38,5 +38,18 @@ class Mono
         }
 
         return true;
+    }
+
+    /**
+     * @return array|object
+     * @throws Exceptions\IsNullException
+     * @throws InvalidArgumentException
+     * @link https://docs.mono.co/reference#list-institutions
+     */
+    public static function coverage()
+    {
+        $url = "coverage";
+
+        return static::staticRequest('GET', $url);
     }
 }

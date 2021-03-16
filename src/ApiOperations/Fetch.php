@@ -1,9 +1,10 @@
 <?php
 
-namespace Digikraaft\Paystack\ApiOperations;
+namespace Digikraaft\Mono\ApiOperations;
 
 trait Fetch
 {
+    use Request;
     /**
      * @param string $id Resource id
      *

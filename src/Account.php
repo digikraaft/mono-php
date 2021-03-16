@@ -2,6 +2,8 @@
 
 namespace Digikraaft\Mono;
 
+use Digikraaft\Mono\Util\Util;
+
 class Account extends ApiResource
 {
     const OBJECT_NAME = 'accounts';
@@ -12,7 +14,7 @@ class Account extends ApiResource
      * @return array|object
      * @throws Exceptions\InvalidArgumentException
      * @throws Exceptions\IsNullException
-     * @link https://www.notion.so/API-endpoints-b75e32f64c75471ab5fbcc61927f6679
+     * @link https://docs.mono.co/reference#authentication-endpoint
      */
     public static function authenticate(string $authCode)
     {
@@ -21,80 +23,152 @@ class Account extends ApiResource
         return static::staticRequest('POST', $url, ['code' => $authCode]);
     }
 
-    public static function details(string $id)
+    /**
+     * @param string $accountId
+     * @return array|object
+     * @throws Exceptions\InvalidArgumentException
+     * @throws Exceptions\IsNullException
+     * @link https://docs.mono.co/reference#bank-account-details
+     */
+    public static function details(string $accountId)
     {
-        $url = self::endPointUrl("{$id}");
+        $url = self::endPointUrl("{$accountId}");
 
         return self::staticRequest('GET', $url);
     }
 
     /**
-     * @param string $id
-     *
-     * @param array  $filters
+     * @param string $accountId
+     * @param array $filters
      *
      * @return array|object
      * @throws Exceptions\InvalidArgumentException
      * @throws Exceptions\IsNullException
-     * @link https://www.notion.so/API-endpoints-b75e32f64c75471ab5fbcc61927f6679
+     * @link https://docs.mono.co/reference#bank-statement
      */
-    public static function fetchStatement(string $id, array $filters)
+    public static function fetchStatement(string $accountId, array $filters)
     {
-        $url = static::buildQueryString("{$id}/statement", $filters);
+        Util::validateData(['period'], $filters);
+        $url = static::buildQueryString("{$accountId}/statement", $filters);
 
         return static::staticRequest('GET', $url);
     }
 
     /**
-     * @param string $id
-     * @param array  $filters
-     *
+     * @param string $accountId
+     * @param string $jobId
      * @return array|object
      * @throws Exceptions\InvalidArgumentException
      * @throws Exceptions\IsNullException
-     * @link https://www.notion.so/API-endpoints-b75e32f64c75471ab5fbcc61927f6679
+     * @link https://docs.mono.co/reference#poll-statement-status
      */
-    public static function listTransactions(string $id, ?array $filters = null)
+    public static function pollStatementPdfStatus(string $accountId, string $jobId)
     {
-        $url = static::buildQueryString("{$id}/transactions", $filters);
+        $url = self::endPointUrl("{$accountId}/statement/jobs/$jobId");
 
         return static::staticRequest('GET', $url);
     }
 
     /**
-     * @param string $id
+     * @param string $accountId
+     * @param array|null $filters
      *
      * @return array|object
      * @throws Exceptions\InvalidArgumentException
      * @throws Exceptions\IsNullException
-     * @link https://www.notion.so/API-endpoints-b75e32f64c75471ab5fbcc61927f6679
+     * @link https://docs.mono.co/reference#transactions
      */
-    public static function listCredits(string $id)
+    public static function listTransactions(string $accountId, ?array $filters = null)
     {
-        $url = static::buildQueryString("{$id}/credits");
+        $url = static::buildQueryString("{$accountId}/transactions", $filters);
 
         return static::staticRequest('GET', $url);
     }
 
     /**
-     * @param string $id
-     *
+     * @param string $accountId
      * @return array|object
      * @throws Exceptions\InvalidArgumentException
      * @throws Exceptions\IsNullException
-     * @link https://www.notion.so/API-endpoints-b75e32f64c75471ab5fbcc61927f6679
+     * @link https://docs.mono.co/reference#income
      */
-    public static function listDebits(string $id)
+    public static function income(string $accountId)
     {
-        $url = static::buildQueryString("{$id}/debits");
-
-        return static::staticRequest('GET', $url);
-    }
-
-    public static function income(string $id)
-    {
-        $url = static::endPointUrl("{$id}/income");
+        $url = static::endPointUrl("{$accountId}/income");
 
         return static::staticRequest("GET", $url);
+    }
+
+    /**
+     * @param string $accountId
+     * @return array|object
+     * @throws Exceptions\InvalidArgumentException
+     * @throws Exceptions\IsNullException
+     * @link https://docs.mono.co/reference#identity
+     */
+    public static function identity(string $accountId)
+    {
+        $url = static::endPointUrl("{$accountId}/identity");
+
+        return static::staticRequest("GET", $url);
+    }
+
+    /**
+     * @param string $accountId
+     * @param array $params
+     * @return array|object
+     * @throws Exceptions\InvalidArgumentException
+     * @throws Exceptions\IsNullException
+     * @link https://docs.mono.co/reference#manually-trigger
+     */
+    public static function sync(string $accountId, ?array $params = null)
+    {
+        $url = static::endPointUrl("{$accountId}/sync");
+
+        return static::staticRequest("POST", $url, $params);
+    }
+
+    /**
+     * @param string $accountId
+     * @param array|null $params
+     * @return array|object
+     * @throws Exceptions\InvalidArgumentException
+     * @throws Exceptions\IsNullException
+     * @link https://docs.mono.co/reference#reauth-code
+     */
+    public static function reauthorise(string $accountId, ?array $params = null)
+    {
+        $url = static::endPointUrl("{$accountId}/reauthorise");
+
+        return static::staticRequest("POST", $url, $params);
+    }
+
+    /**
+     * @param null $params
+     * @return array|object
+     * @throws Exceptions\InvalidArgumentException
+     * @throws Exceptions\IsNullException
+     * @link https://docs.mono.co/reference#bvnlookup
+     */
+    public static function bvnLookup($params = null)
+    {
+        $url = "lookup/bvn/identity";
+
+        return static::staticRequest('POST', $url, $params);
+    }
+
+    /**
+     * @param string $accountId
+     * @param array|null $params
+     * @return array|object
+     * @throws Exceptions\InvalidArgumentException
+     * @throws Exceptions\IsNullException
+     * @link https://docs.mono.co/reference#unlink-account
+     */
+    public static function unlink(string $accountId, ?array $params = null)
+    {
+        $url = static::endPointUrl("{$accountId}/unlink");
+
+        return static::staticRequest("POST", $url, $params);
     }
 }

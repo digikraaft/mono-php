@@ -2,13 +2,13 @@
 
 namespace Digikraaft\Mono;
 
-use Digikraaft\Mono\ApiOperations\Request;
+use Digikraaft\Mono\Exceptions\InvalidArgumentException;
 
 class ApiResource
 {
     const OBJECT_NAME = null;
 
-    use Request;
+    use ApiOperations\Request;
 
     /**
      * @return string the base URL for the given class
@@ -43,7 +43,7 @@ class ApiResource
 
     /**
      * @param string $slug
-     * @param $params array of query parameters
+     * @param null $params array of query parameters
      *
      * @return string the endpoint URL for the given class
      */
@@ -55,5 +55,24 @@ class ApiResource
         }
 
         return $url;
+    }
+
+    /**
+     * @param $id
+     * @return string
+     * @throws InvalidArgumentException
+     */
+    public static function resourceUrl($id)
+    {
+        if (null === $id) {
+            $message = 'Invalid ID supplied. ID cannot be null';
+
+            throw new InvalidArgumentException($message);
+        }
+        $id = Util\Util::utf8($id);
+        $base = static::classUrl();
+        $extn = urlencode($id);
+
+        return "{$base}/{$extn}";
     }
 }

@@ -2,20 +2,20 @@
 
 namespace Digikraaft\Mono\ApiOperations;
 
-trait Update
+trait Delete
 {
     use Request;
+
     /**
-     * @param string $id     Resource id
-     * @param array  $params
-     *
+     * @param string $id Resource id
      * @return array|object
+     * @throws \Digikraaft\Mono\Exceptions\InvalidArgumentException
+     * @throws \Digikraaft\Mono\Exceptions\IsNullException
      */
-    public static function update(string $id, $params)
+    public static function delete(string $id)
     {
-        self::validateParams($params, true);
         $url = self::resourceUrl($id);
 
-        return static::staticRequest('PUT', $url, $params);
+        return static::staticRequest('DELETE', $url);
     }
 }

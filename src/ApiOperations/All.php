@@ -1,13 +1,17 @@
 <?php
 
-namespace Digikraaft\Paystack\ApiOperations;
+namespace Digikraaft\Mono\ApiOperations;
 
 trait All
 {
+    use Request;
+
     /**
      * @param null|array $params query parameters
      *
      * @return array|object
+     * @throws \Digikraaft\Mono\Exceptions\InvalidArgumentException
+     * @throws \Digikraaft\Mono\Exceptions\IsNullException
      */
     public static function list($params = null)
     {

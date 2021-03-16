@@ -68,4 +68,23 @@ abstract class Util
 
         return $obj;
     }
+
+    public static function validateData(array $expectedKeys, array $data)
+    {
+        //check if array keys are empty
+        if (! array_filter($data)) {
+            throw new \Digikraaft\Mono\Exceptions\InvalidArgumentException("Please check that all required keys are present and not null");
+        }
+        if (! self::in_array_all(
+            $expectedKeys,
+            $data
+        )) {
+            throw new \Digikraaft\KudaBank\Exceptions\InvalidArgumentException("Please check that all required keys are present");
+        }
+    }
+
+    protected static function in_array_all(array $expectedKeys, array $arrayOfData) : bool
+    {
+        return ! array_diff_key(array_flip($expectedKeys), $arrayOfData);
+    }
 }

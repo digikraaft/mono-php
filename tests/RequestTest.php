@@ -71,6 +71,6 @@ class RequestTest extends TestCase
     public function it_can_return_api_error_exception()
     {
         $this->expectException(ApiErrorException::class);
-        Account::listDebits('5e89yuee990jkkjj9');
+        Account::details('5e89yuee990jkkjj9');
     }
 }
