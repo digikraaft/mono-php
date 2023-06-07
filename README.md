@@ -27,7 +27,7 @@ All APIs documented in Mono's [API Reference](https://docs.mono.co/docs) are cur
 ### Authentication
 Before using any of the endpoints, you will have to authenticate the current account
 with the endpoint `account/auth` :
-```
+```php
 <?php 
 
 include_once('vendor/autoload.php');
